@@ -11,7 +11,7 @@
     <title>@yield('PageTitle')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/front.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,17 +21,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
 
+    @include('partials.header')
 
-        @include('partials.header')
-
-        {{-- <x-navbar color="light" /> --}}
-
-        <main>
-            @yield('PageContent')
-        </main>
-    </div>
+    <main>
+        @yield('PageContent')
+    </main>
 
 </body>
 </html>
