@@ -1,9 +1,7 @@
 <template>
     <div>
         <header-app/>
-    </div>
 
-    <div>
         <main-app/>
     </div>
 </template>
