@@ -35,38 +35,38 @@
 export default {
     name:'MainApp',
 
-    data() {
-        return{
-            posts : [],
-            frstPageUrl: null,
-            prvPageUrl : null,
-            nxtPageUrl : null,
-            lstPageUrl: null,
-            nCurrentPage: null,
-            nLstPage: null,
-        }
-    },
+    // data() {
+    //     return{
+    //         posts : [],
+    //         frstPageUrl: null,
+    //         prvPageUrl : null,
+    //         nxtPageUrl : null,
+    //         lstPageUrl: null,
+    //         nCurrentPage: null,
+    //         nLstPage: null,
+    //     }
+    // },
 
-    created(){
-        this.getData('http://localhost:8000/api/guest');
-    },
+    // created(){
+    //     this.getData('http://localhost:8000/api/guest');
+    // },
 
-    methods: {
-        getData(url) {
-            if (url) {       
-                Axios.get(url)
-                .then(response => {
-                    this.posts = response.data.response.data;
-                    this.frstPageUrl = response.data.response.first_page_url;
-                    this.prvPageUrl = response.data.response.prev_page_url;
-                    this.nxtPageUrl = response.data.response.next_page_url;
-                    this.lstPageUrl = response.data.response.last_page_url;
-                    this.nCurrentPage = response.data.response.current_page;
-                    this.nLstPage = response.data.response.last_page;
-                })
-            }
-        }
-    }
+    // methods: {
+    //     getData(url) {
+    //         if (url) {       
+    //             Axios.get(url)
+    //             .then(response => {
+    //                 this.posts = response.data.response.data;
+    //                 this.frstPageUrl = response.data.response.first_page_url;
+    //                 this.prvPageUrl = response.data.response.prev_page_url;
+    //                 this.nxtPageUrl = response.data.response.next_page_url;
+    //                 this.lstPageUrl = response.data.response.last_page_url;
+    //                 this.nCurrentPage = response.data.response.current_page;
+    //                 this.nLstPage = response.data.response.last_page;
+    //             })
+    //         }
+    //     }
+    // }
 }
 </script>
 
