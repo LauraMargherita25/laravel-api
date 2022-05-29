@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Post;
 
 class PostController extends Controller
 {
@@ -15,8 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        dd($posts);
+        $posts = Post::paginate(15);
         
         return response()->json([
             'status'    => 'success',
