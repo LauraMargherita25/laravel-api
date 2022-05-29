@@ -6,7 +6,7 @@
                         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
                         <div class="card-body">
                             <h5 class="card-title text-capitalize">{{ post.title }}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">{{ getExcerpt(post.content) }}</p>
                         </div>
                         <div class="card-footer border-0 d-flex justify-content-end">
                             <router-link :to="{name: 'postShow', params: {slug: post.slug}}" class="btn btn-primary">Read more</router-link>
@@ -35,6 +35,7 @@ export default {
     
     data() {
         return{
+            excerptMaxLenght: 200,
             posts : [],
             baseApiUrl: 'http://localhost:8000/api/guest',
             frstPageUrl: null,
@@ -63,6 +64,14 @@ export default {
                     this.nCurrentPage = response.data.response.current_page;
                     this.nLstPage = response.data.response.last_page;
                 })
+            }
+        },
+
+        getExcerpt(content) {
+            if (content.length > this.excerptMaxLenght) {
+                return content.substring(0, this.excerptMaxLenght) + ' ...';
+            } else {
+                return content;
             }
         }
     }
