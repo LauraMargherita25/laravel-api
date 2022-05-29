@@ -61,14 +61,22 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($slug)
     {
-        return response()->json([
-            'success'    => true,
-            'response'  => [
-                'data' => $post,
-            ]
-        ]);
+        $post = Post::where('slug', $slug)->first();
+
+        if ($post) {
+            return response()->json([
+                'success'    => true,
+                'response'  => [
+                    'data' => $post,
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'success'    => false,
+            ]);
+        }
     }
 
     /**

@@ -28,7 +28,11 @@ export default {
         getData(url) {
             Axios(url)
             .then(response => {
-                this.post = response.data.response.data;
+                if (response.data.success) {
+                    this.post = response.data.response.data;
+                } else {
+                    this.$router.push({name : 'page404'})
+                }
             });
         }
     }
