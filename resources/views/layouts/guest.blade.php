@@ -24,9 +24,8 @@
 
     @include('partials.header')
 
-    <main>
-        @yield('PageContent')
-    </main>
+
+    @yield('PageContent')
 
 </body>
 </html>
