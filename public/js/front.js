@@ -5108,6 +5108,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'HeaderApp'
 });
@@ -5204,6 +5208,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HeaderApp_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/HeaderApp.vue */ "./resources/js/components/HeaderApp.vue");
 /* harmony import */ var _components_MainApp_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/MainApp.vue */ "./resources/js/components/MainApp.vue");
+//
+//
 //
 //
 //
@@ -27945,7 +27951,26 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("header", [_vm._v("\n    Questa è l'header dell'app\n")])
+  return _c("header", { staticClass: "mt-5" }, [
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c("router-link", { attrs: { to: { name: "home" } } }, [
+          _vm._v("Home"),
+        ]),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: { name: "about" } } }, [
+          _vm._v("About"),
+        ]),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: { name: "postIndex" } } }, [
+          _vm._v("Blog"),
+        ]),
+      ],
+      1
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -27969,173 +27994,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", [
-    _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        { staticClass: "row g-1" },
-        _vm._l(_vm.posts, function (post) {
-          return _c("div", { key: post.id, staticClass: "col-4" }, [
-            _c("div", { staticClass: "card h-100" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("h5", { staticClass: "card-title text-capitalize" }, [
-                  _vm._v(_vm._s(post.title)),
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(
-                    "Some quick example text to build on the card title and make up the bulk of the card's content."
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "card-footer border-0 d-flex justify-content-end",
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-primary ",
-                      attrs: { href: "/guest/" + post.slug },
-                    },
-                    [_vm._v("Read more")]
-                  ),
-                ]
-              ),
-            ]),
-          ])
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "nav",
-          {
-            staticClass: "mt-5 d-flex justify-content-center",
-            attrs: { "aria-label": "Page navigation example" },
-          },
-          [
-            _c("ul", { staticClass: "pagination" }, [
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: { disabled: _vm.nCurrentPage == 1 },
-                  on: {
-                    click: function ($event) {
-                      return _vm.getData(_vm.frstPageUrl)
-                    },
-                  },
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      staticStyle: { cursor: "pointer" },
-                    },
-                    [_vm._v("First Page")]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: { disabled: !_vm.prvPageUrl },
-                  on: {
-                    click: function ($event) {
-                      return _vm.getData(_vm.prvPageUrl)
-                    },
-                  },
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      staticStyle: { cursor: "pointer" },
-                    },
-                    [_vm._v("Previous")]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item disabled" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "page-link text-dark",
-                    staticStyle: { cursor: "pointer" },
-                  },
-                  [
-                    _vm._v(
-                      "Page " +
-                        _vm._s(_vm.nCurrentPage) +
-                        " of " +
-                        _vm._s(_vm.nLstPage)
-                    ),
-                  ]
-                ),
-              ]),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: { disabled: !_vm.nxtPageUrl },
-                  on: {
-                    click: function ($event) {
-                      return _vm.getData(_vm.nxtPageUrl)
-                    },
-                  },
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      staticStyle: { cursor: "pointer" },
-                    },
-                    [_vm._v("Next")]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: { disabled: _vm.nCurrentPage == _vm.nLstPage },
-                  on: {
-                    click: function ($event) {
-                      return _vm.getData(_vm.lstPageUrl)
-                    },
-                  },
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      staticStyle: { cursor: "pointer" },
-                    },
-                    [_vm._v("Last Page")]
-                  ),
-                ]
-              ),
-            ]),
-          ]
-        ),
-      ]),
-    ]),
-  ])
+  return _c("main")
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -28159,7 +28018,17 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("header-app"), _vm._v(" "), _c("main-app")], 1)
+  return _c(
+    "div",
+    [
+      _c("header-app"),
+      _vm._v(" "),
+      _c("main-app"),
+      _vm._v(" "),
+      _c("router-view"),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -43737,6 +43606,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/App.vue */ "./resources/js/views/App.vue");
+/* harmony import */ var _pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/HomePage.vue */ "./resources/js/pages/HomePage.vue");
+/* harmony import */ var _pages_AboutPage_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/AboutPage.vue */ "./resources/js/pages/AboutPage.vue");
+/* harmony import */ var _pages_PostIndex_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/PostIndex.vue */ "./resources/js/pages/PostIndex.vue");
+/* harmony import */ var _pages_PostShow_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/PostShow.vue */ "./resources/js/pages/PostShow.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -43766,8 +43639,31 @@ window.Axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 
 
 
+
+
+
+
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({});
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  mode: 'history',
+  routes: [{
+    path: '/',
+    name: 'home',
+    component: _pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    path: '/about',
+    name: 'about',
+    component: _pages_AboutPage_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }, {
+    path: '/blog',
+    name: 'postIndex',
+    component: _pages_PostIndex_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
+    path: '/blog/:slug',
+    name: 'postShow',
+    component: _pages_PostShow_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }]
+});
 var app = new Vue({
   el: '#app',
   render: function render(h) {
@@ -43775,6 +43671,134 @@ var app = new Vue({
   },
   router: router
 });
+
+/***/ }),
+
+/***/ "./resources/js/pages/AboutPage.vue":
+/*!******************************************!*\
+  !*** ./resources/js/pages/AboutPage.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/pages/AboutPage.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/HomePage.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/pages/HomePage.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/pages/HomePage.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/PostIndex.vue":
+/*!******************************************!*\
+  !*** ./resources/js/pages/PostIndex.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/pages/PostIndex.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/PostShow.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/pages/PostShow.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/pages/PostShow.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 

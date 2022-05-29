@@ -33,11 +33,37 @@ window.Axios = require('axios');
 
 import VueRouter from 'vue-router'
 import App from './views/App.vue'
+import HomePage from './pages/HomePage.vue'
+import AboutPage from './pages/AboutPage.vue'
+import PostIndex from './pages/PostIndex.vue'
+import PostShow from './pages/PostShow.vue'
 
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-
+    mode: 'history',
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: HomePage,
+        },
+        {
+            path: '/about',
+            name: 'about',
+            component: AboutPage,
+        },
+        {
+            path: '/blog',
+            name: 'postIndex',
+            component: PostIndex,
+        },
+        {
+            path: '/blog/:slug',
+            name: 'postShow',
+            component: PostShow,
+        },
+    ]
 })
 
 const app = new Vue({
