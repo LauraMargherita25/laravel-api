@@ -1,10 +1,10 @@
 <template>
     <main>
-        <div class="container">
+        <!-- <div class="container">
             <div class="row g-1">
                 <div class="col-4" v-for="post in posts" :key="post.id">
                     <div class="card h-100">
-                        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                        <img class="card-img-top" src="..." alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title text-capitalize">{{ post.title }}</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -27,7 +27,7 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div> -->
     </main>
 </template>
 

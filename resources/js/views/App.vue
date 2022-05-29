@@ -3,6 +3,8 @@
         <header-app/>
 
         <main-app/>
+
+        <router-view></router-view>
     </div>
 </template>
 
