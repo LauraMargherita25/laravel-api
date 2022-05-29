@@ -11,6 +11,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 window.Axios = require('axios');
 
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -30,10 +31,18 @@ window.Axios = require('axios');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import VueRouter from 'vue-router'
 import App from './views/App.vue'
+
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+
+})
 
 const app = new Vue({
     el: '#app',
     render: h => h(App),
+    router
 });
 
