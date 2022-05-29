@@ -4,11 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
- const { default: Axios } = require('axios');
+// const { default: Axios } = require('axios');
 
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.Axios = require('axios');
 
 /**
  * The following block of code may be used to automatically register your

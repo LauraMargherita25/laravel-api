@@ -5129,8 +5129,66 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'MainApp'
+  name: 'MainApp',
+  data: function data() {
+    return {
+      posts: [],
+      frstPageUrl: null,
+      prvPageUrl: null,
+      nxtPageUrl: null,
+      lstPageUrl: null,
+      nCurrentPage: null,
+      nLstPage: null
+    };
+  },
+  created: function created() {
+    this.getData('http://localhost:8000/api/guest');
+  },
+  methods: {
+    getData: function getData(url) {
+      var _this = this;
+
+      if (url) {
+        Axios.get(url).then(function (response) {
+          _this.posts = response.data.response.data;
+          _this.frstPageUrl = response.data.response.first_page_url;
+          _this.prvPageUrl = response.data.response.prev_page_url;
+          _this.nxtPageUrl = response.data.response.next_page_url;
+          _this.lstPageUrl = response.data.response.last_page_url;
+          _this.nCurrentPage = response.data.response.current_page;
+          _this.nLstPage = response.data.response.last_page;
+        });
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -27911,7 +27969,173 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", [_vm._v("\n    Questo è il main dell'app\n")])
+  return _c("main", [
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        { staticClass: "row g-1" },
+        _vm._l(_vm.posts, function (post) {
+          return _c("div", { key: post.id, staticClass: "col-4" }, [
+            _c("div", { staticClass: "card h-100" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h5", { staticClass: "card-title text-capitalize" }, [
+                  _vm._v(_vm._s(post.title)),
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(
+                    "Some quick example text to build on the card title and make up the bulk of the card's content."
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "card-footer border-0 d-flex justify-content-end",
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-primary ",
+                      attrs: { href: "/guest/" + post.slug },
+                    },
+                    [_vm._v("Read more")]
+                  ),
+                ]
+              ),
+            ]),
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "nav",
+          {
+            staticClass: "mt-5 d-flex justify-content-center",
+            attrs: { "aria-label": "Page navigation example" },
+          },
+          [
+            _c("ul", { staticClass: "pagination" }, [
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: _vm.nCurrentPage == 1 },
+                  on: {
+                    click: function ($event) {
+                      return _vm.getData(_vm.frstPageUrl)
+                    },
+                  },
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      staticStyle: { cursor: "pointer" },
+                    },
+                    [_vm._v("First Page")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: !_vm.prvPageUrl },
+                  on: {
+                    click: function ($event) {
+                      return _vm.getData(_vm.prvPageUrl)
+                    },
+                  },
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      staticStyle: { cursor: "pointer" },
+                    },
+                    [_vm._v("Previous")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c("li", { staticClass: "page-item disabled" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "page-link text-dark",
+                    staticStyle: { cursor: "pointer" },
+                  },
+                  [
+                    _vm._v(
+                      "Page " +
+                        _vm._s(_vm.nCurrentPage) +
+                        " of " +
+                        _vm._s(_vm.nLstPage)
+                    ),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: !_vm.nxtPageUrl },
+                  on: {
+                    click: function ($event) {
+                      return _vm.getData(_vm.nxtPageUrl)
+                    },
+                  },
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      staticStyle: { cursor: "pointer" },
+                    },
+                    [_vm._v("Next")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: _vm.nCurrentPage == _vm.nLstPage },
+                  on: {
+                    click: function ($event) {
+                      return _vm.getData(_vm.lstPageUrl)
+                    },
+                  },
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      staticStyle: { cursor: "pointer" },
+                    },
+                    [_vm._v("Last Page")]
+                  ),
+                ]
+              ),
+            ]),
+          ]
+        ),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40352,12 +40576,11 @@ __webpack_require__.r(__webpack_exports__);
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
-    Axios = _require["default"];
-
+// const { default: Axios } = require('axios');
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
