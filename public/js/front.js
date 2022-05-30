@@ -5410,6 +5410,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostShow',
   props: ['slug'],
@@ -28587,6 +28588,14 @@ var render = function () {
     _vm.post
       ? _c("div", [
           _c("h1", [_vm._v(_vm._s(_vm.post.title))]),
+          _vm._v(" "),
+          _c("b", [
+            _vm.post.category
+              ? _c("span", [
+                  _vm._v(" In category: " + _vm._s(_vm.post.category.name)),
+                ])
+              : _vm._e(),
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.post.content))]),
         ])
