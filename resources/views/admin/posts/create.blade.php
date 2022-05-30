@@ -43,7 +43,7 @@
                     @enderror
 
                     
-                    <select class="form-select" aria-label="Default select example" name="category_id" id="category">
+                    <select class="form-select" aria-label="Default select example" name="category_id" id="category_id">
                         <option value="">Select a category</option>
 
                         @foreach ($categories as $category)

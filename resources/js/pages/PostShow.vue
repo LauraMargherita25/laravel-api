@@ -3,6 +3,7 @@
         <div v-if="post">
             <h1>{{ post.title }}</h1>
             <b><span v-if="post.category"> In category: {{ post.category.name }}</span></b>
+            <img :src="post.img_url" alt="post.title">
             <p>{{ post.content }}</p>
         </div>
     </div>

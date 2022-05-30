@@ -92,16 +92,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate($this->getValidators(null));
 
         $data = $request->all();
         
         $img_path = Storage::put('uploads', $data['post_img']);
         
-        $formData = $data + [
+        $formData = [
             'user_id' => Auth::user()->id,
             'post_img' => $img_path,
-        ];
+        ] + $data;
         $post = Post::create($formData);
 
         return redirect()->route('admin.posts.show', $post->slug);
@@ -149,8 +150,18 @@ class PostController extends Controller
         if (Auth::user()->id !== $post->user_id) abort(403);
 
         $request->validate($this->getValidators($post));
+        
+        $formData = $request->all();
 
-        $post->update($request->all());
+        if (array_key_exists('post_img', $formData)) {
+            Storage::delete($post->post_image);
+            $img_path = Storage::put('uploads', $formData['post_img']);
+            $formData = [
+                'post_image'    => $img_path
+            ] + $formData;
+        }
+
+        $post->update($formData);
 
         return redirect()->route('admin.posts.show', $post->slug);
     }
