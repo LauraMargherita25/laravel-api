@@ -11,7 +11,7 @@ class Post extends Model
     {
         return 'slug';
     }
-    protected $fillable = ['title', 'content', 'slug'];
+    protected $fillable = ['title', 'content', 'slug', 'user_id', 'category_id', 'post_img'];
 
     static public function generateSlug($originalStr) {
         $baseSlug = Str::slug($originalStr);
