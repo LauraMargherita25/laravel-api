@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -28,7 +29,8 @@ class PostController extends Controller
                 'max:100'
             ],
             'category_id'  => 'required|exists:App\Category,id',
-            'content'   => 'required'
+            'content'   => 'required',
+            'post_image'    => 'nullable|image',
         ];
     }
     
@@ -77,9 +79,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        // return view('admin.posts.create');
 
-        $categories = \App\Category::all();
+        $categories = Category::all();
         return view('admin.posts.create', compact('categories'));
     }
 
@@ -92,12 +93,17 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->getValidators(null));
+
+        $data = $request->all();
         
-        $formData = $request->all() + [
-            'user_id' => Auth::user()->id
+        $img_path = Storage::put('uploads', $data['post_img']);
+        
+        $formData = $data + [
+            'user_id' => Auth::user()->id,
+            'post_img' => $img_path,
         ];
         $post = Post::create($formData);
-        
+
         return redirect()->route('admin.posts.show', $post->slug);
     }
 

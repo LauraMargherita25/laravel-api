@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form action="{{ route('admin.posts.store') }}" method="post">
+                <form action="{{ route('admin.posts.store') }}" method="post" enctype='multipart/form-data'>
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">{{ __('Title') }}</label>
@@ -23,6 +23,14 @@
                     </div>
                     <input type="button" value="Generate slug" id="btn-slugger">
                     @error('slug')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+
+                    <div class="mb-3">
+                        <label for="post_img" class="form-label">Multiple files input example</label>
+                        <input class="form-control" type="file" id="post_img" name="post_img" accept="image/*" multiple>
+                    </div>
+                    @error('post_img')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
 
