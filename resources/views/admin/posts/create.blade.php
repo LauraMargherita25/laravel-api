@@ -56,7 +56,7 @@
                     @error('category_id')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <button>Save</button>
+                    <button class="btn btn-primary">Save</button>
                 </form>
             </div>
         </div>

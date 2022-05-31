@@ -35,6 +35,7 @@ import VueRouter from 'vue-router'
 import App from './views/App.vue'
 import HomePage from './pages/HomePage.vue'
 import AboutPage from './pages/AboutPage.vue'
+import ContactUsPage from './pages/ContactUsPage.vue'
 import PostIndex from './pages/PostIndex.vue'
 import PostShow from './pages/PostShow.vue'
 import Page404 from './pages/Page404.vue'
@@ -53,6 +54,11 @@ const router = new VueRouter({
             path: '/about',
             name: 'about',
             component: AboutPage,
+        },
+        {
+            path: '/contact-us',
+            name: 'contactUs',
+            component: ContactUsPage,
         },
         {
             path: '/blog',

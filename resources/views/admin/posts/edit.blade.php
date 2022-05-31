@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form action="{{ route('admin.posts.update', $post->slug) }}" method="post">
+                <form action="{{ route('admin.posts.update', $post->slug) }}" method="post" enctype='multipart/form-data'>
                     @csrf
                     @method('PUT')
 
@@ -25,6 +25,15 @@
                     </div>
                     <input type="button" value="Generate slug" id="btn-slugger">
                     @error('slug')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+
+                    <div class="mb-3">
+                        <label for="post_img" class="form-label">Multiple files input example</label>
+                        <input class="form-control" type="file" id="post_img" name="post_img" accept="image/*" multiple>
+                    </div>
+                    <img src="{{ asset('storage/' . $post->post_img) }}" alt="{{ $post->title }}">
+                    @error('post_img')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
 
@@ -47,7 +56,7 @@
                         @endforeach
                     </select>
 
-                    <button>Update</button>
+                    <button class="btn btn-primary">Update</button>
                     
                 </form>
                 
